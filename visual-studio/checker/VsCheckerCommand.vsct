@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <Extern href="stdidcmd.h" />
+  <Extern href="vsshlids.h" />
+
+  <Commands package="guidVsCheckerPackage">
+    <Groups>
+      <Group guid="guidVsCheckerCmdSet" id="VsCheckerContextGroup" priority="0x7000">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN" />
+      </Group>
+    </Groups>
+
+    <Buttons>
+      <Button guid="guidVsCheckerCmdSet" id="VsCheckerCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidVsCheckerCmdSet" id="VsCheckerContextGroup" />
+        <Strings>
+          <ButtonText>文件已校验</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+  </Commands>
+
+  <Symbols>
+    <GuidSymbol name="guidVsCheckerPackage" value="{A59B663D-9E90-46EF-933E-6C2AF9C5FE4E}" />
+    <GuidSymbol name="guidVsCheckerCmdSet" value="{C09B25C8-8E90-4F0B-9C7E-7AA4379F3F9B}">
+      <IDSymbol name="VsCheckerContextGroup" value="0x1020" />
+      <IDSymbol name="VsCheckerCommandId" value="0x0100" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
