@@ -1,0 +1,60 @@
+{
+  "name": "checker",
+  "displayName": "Checker",
+  "description": "Append a check signature with the Git user and current UTC timestamp to the end of a file.",
+  "version": "0.0.1",
+  "publisher": "animitta",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/animitta/ide-extensions.git",
+    "directory": "visual-sutdio-code/checker"
+  },
+  "engines": {
+    "vscode": "^1.102.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "keybindings": [
+      {
+        "command": "checker.insertTemplate",
+        "key": "ctrl+c ctrl+c",
+        "when": "editorTextFocus && !editorHasSelection && !editorReadonly"
+      }
+    ],
+    "commands": [
+      {
+        "command": "checker.insertTemplate",
+        "title": "插入 UTC 字符串模板",
+        "category": "Checker"
+      }
+    ],
+    "configuration": {
+      "title": "Checker",
+      "properties": {
+        "checker.template": {
+          "type": "string",
+          "default": "// Checked by {user} {time}",
+          "scope": "resource",
+          "description": "追加到文件末尾的模板。{user} 为 Git user.name（读取失败时为 Anonymous），{time} 为带 +00:00 时区的当前 UTC 时间。兼容 {{utc}}。模板前后各一个换行，复用文件已有的结尾换行。"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "watch": "tsc -p . --watch",
+    "vscode:prepublish": "npm run compile",
+    "test": "npm run compile && node --test test/*.test.cjs",
+    "package": "vsce package --out checker-0.0.1.vsix"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "~1.102.0",
+    "@vscode/vsce": "^3.6.0",
+    "typescript": "^5.8.3"
+  }
+}
